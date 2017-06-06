@@ -9,17 +9,13 @@ public class playerMove : MonoBehaviour {
     Transform playerCam;
     Vector3 transVal;
 
-    // Use this for initialization
     void Start () {
         playerCam = transform.Find("playerCam");
-        Screen.lockCursor = true;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 	
-	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.Escape))
-            Screen.lockCursor = false;
-
+        #region WASD Moves and Mouse Rotation
         transVal = new Vector3(0, 0, 0);
         if (Input.GetKey(KeyCode.W))
             transVal += playerCam.forward * Time.deltaTime;
@@ -44,5 +40,8 @@ public class playerMove : MonoBehaviour {
             else
                 playerCam.Rotate(Vector3.left * rotY * rotateSpeed);
         }
+        #endregion
+
+        
     }
 }
