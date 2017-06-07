@@ -10,21 +10,41 @@ public class cursorCenterClick : MonoBehaviour {
     RaycastHit hit;
     public Transform playerCam;
     public Text infoText;
-	
-	// Update is called once per frame
+    public bool isTrace;
+    GameObject mainController;
+
+    void Start () {
+        isTrace = true;
+        mainController = GameObject.Find("mainController");
+    }
+
 	void Update () {
         #region RayClick
-
-        ray = new Ray(playerCam.position, playerCam.forward);
-        if (Physics.Raycast(ray, out hit, rayLength)) {
-            hit.transform.SendMessage("HitByRaycast", gameObject, SendMessageOptions.DontRequireReceiver);
-            infoText.text = hit.transform.name;
-            //set eachcase
-            if (Input.GetMouseButtonDown(0))
-                hit.transform.gameObject.SetActive(false);
+        if (isTrace) { 
+            ray = new Ray(playerCam.position, playerCam.forward);
+            if (Physics.Raycast(ray, out hit, rayLength) && hit.transform.gameObject.layer == LayerMask.NameToLayer("active object")) {
+                if(hit.transform.name == "labtop_whole") {
+                    infoText.text = "筆記型電腦";
+                }
+                else if (hit.transform.name == "lock_body" || hit.transform.name == "lock_number") {
+                    infoText.text = "行李箱鎖";
+                }
+                
+                //set eachcase
+                if (Input.GetMouseButtonDown(0))
+                    if(hit.transform.name == "labtop_whole") {
+                        mainController.GetComponent<ViewController>().setLaptopView(true);
+                    }
+                    else if (hit.transform.name == "lock_body" || hit.transform.name == "lock_number") {
+                        mainController.GetComponent<ViewController>().setSuitcaseLockView(true);
+                    }
+                    else
+                        hit.transform.gameObject.SetActive(false);
+            }
+            else
+                infoText.text = "";
         }
-        else
-            infoText.text = "";
         #endregion
     }
+
 }

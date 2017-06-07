@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: 379699309aa001a4bbf5db530183f7a6
+timeCreated: 1496846415
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: book01
+    100002: book02
+    100004: book03
+    100006: book04
+    100008: coffee cup
+    100010: Desk
+    100012: desklamp_body
+    100014: desklamp_bulb
+    100016: //RootNode
+    100018: labtop_whole
+    100020: officechair_bottom
+    100022: officechair_top
+    100024: officechair_top_MeshPart0
+    100026: officechair_top_MeshPart1
+    100028: pen
+    400000: book01
+    400002: book02
+    400004: book03
+    400006: book04
+    400008: coffee cup
+    400010: Desk
+    400012: desklamp_body
+    400014: desklamp_bulb
+    400016: //RootNode
+    400018: labtop_whole
+    400020: officechair_bottom
+    400022: officechair_top
+    400024: officechair_top_MeshPart0
+    400026: officechair_top_MeshPart1
+    400028: pen
+    2300000: book01
+    2300002: book02
+    2300004: book03
+    2300006: book04
+    2300008: coffee cup
+    2300010: Desk
+    2300012: desklamp_body
+    2300014: desklamp_bulb
+    2300016: labtop_whole
+    2300018: officechair_bottom
+    2300020: officechair_top_MeshPart0
+    2300022: officechair_top_MeshPart1
+    2300024: pen
+    3300000: book01
+    3300002: book02
+    3300004: book03
+    3300006: book04
+    3300008: coffee cup
+    3300010: Desk
+    3300012: desklamp_body
+    3300014: desklamp_bulb
+    3300016: labtop_whole
+    3300018: officechair_bottom
+    3300020: officechair_top_MeshPart0
+    3300022: officechair_top_MeshPart1
+    3300024: pen
+    4300000: book01
+    4300002: book04
+    4300004: book03
+    4300006: book02
+    4300008: pen
+    4300010: coffee cup
+    4300012: desklamp_bulb
+    4300014: desklamp_body
+    4300016: labtop_whole
+    4300018: officechair_bottom
+    4300020: officechair_top_MeshPart0
+    4300022: officechair_top_MeshPart1
+    4300024: Desk
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -46,7 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ViewController.cs" />
      <Compile Include="Assets\cursorCenterClick.cs" />
+     <Compile Include="Assets\itemMenuController.cs" />
      <Compile Include="Assets\playerMove.cs" />
      <None Include="Assets\models\diamond\Gem\Shaders\Gem.shader" />
  <Reference Include="UnityEngine.UI">
