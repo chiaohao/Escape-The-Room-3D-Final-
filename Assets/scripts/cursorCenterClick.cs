@@ -48,6 +48,9 @@ public class cursorCenterClick : MonoBehaviour {
                             break;
                     }
                 }
+                else if (hit.transform.name.Split('0')[0] == "layer") {
+                    infoText.text = "抽屜";
+                }
                 
                 //set eachcase
                 if (Input.GetMouseButtonDown(0))
@@ -70,6 +73,9 @@ public class cursorCenterClick : MonoBehaviour {
                             default:
                                 break;
                         }
+                    }
+                    else if (hit.transform.name.Split('0')[0] == "layer") {
+
                     }
                     else
                         hit.transform.gameObject.SetActive(false);
