@@ -46,10 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ViewController.cs" />
-     <Compile Include="Assets\cursorCenterClick.cs" />
-     <Compile Include="Assets\itemMenuController.cs" />
-     <Compile Include="Assets\playerMove.cs" />
+     <Compile Include="Assets\scripts\ViewController.cs" />
+     <Compile Include="Assets\scripts\cubeItem.cs" />
+     <Compile Include="Assets\scripts\cursorCenterClick.cs" />
+     <Compile Include="Assets\scripts\itemMenuController.cs" />
+     <Compile Include="Assets\scripts\playerMove.cs" />
      <None Include="Assets\models\diamond\Gem\Shaders\Gem.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
