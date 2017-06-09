@@ -43,7 +43,7 @@ public class poemController : MonoBehaviour {
                 }
             }
             if (titleDelayTime >= 200f)
-                SceneManager.LoadScene("main");
+                SceneManager.LoadScene("scenes/main");
         }
     }
 }
