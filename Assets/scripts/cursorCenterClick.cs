@@ -6,16 +6,20 @@ using UnityEngine.UI;
 public class cursorCenterClick : MonoBehaviour {
 
     Ray ray;
-    float rayLength = 15f;
+    float rayLength = 8f;
     RaycastHit hit;
     public Transform playerCam;
     public Text infoText;
     public bool isTrace;
-    GameObject mainController;
+    public bool isBigDoorTraced;
+    ViewController viewController;
+    puzzleController puzzleController;
 
     void Start () {
         isTrace = true;
-        mainController = GameObject.Find("mainController");
+        isBigDoorTraced = false;
+        viewController = GameObject.Find("mainController").GetComponent<ViewController>();
+        puzzleController = GameObject.Find("mainController").GetComponent<puzzleController>();
     }
 
 	void Update () {
@@ -48,6 +52,44 @@ public class cursorCenterClick : MonoBehaviour {
                             break;
                     }
                 }
+                else if (hit.transform.name.Split('_')[0] == "door") {
+                    switch (hit.transform.name.Split('_')[1].Split(' ')[0]) {
+                        case "blue":
+                            infoText.text = "藍寶石";
+                            break;
+                        case "red":
+                            infoText.text = "紅寶石";
+                            break;
+                        case "purple":
+                            infoText.text = "紫寶石";
+                            break;
+                        case "orange":
+                            infoText.text = "橘寶石";
+                            break;
+                        default:
+                            infoText.text = "大門";
+                            break;
+                    }
+                    isBigDoorTraced = true;
+                }
+                else if (hit.transform.name.Split(' ')[1] == "diamond") {
+                    switch (hit.transform.name.Split(' ')[0]) {
+                        case "blue":
+                            infoText.text = "藍寶石";
+                            break;
+                        case "red":
+                            infoText.text = "紅寶石";
+                            break;
+                        case "purple":
+                            infoText.text = "紫寶石";
+                            break;
+                        case "orange":
+                            infoText.text = "橘寶石";
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 else if (hit.transform.name.Split('0')[0] == "layer") {
                     infoText.text = "抽屜";
                 }
@@ -55,33 +97,77 @@ public class cursorCenterClick : MonoBehaviour {
                 //set eachcase
                 if (Input.GetMouseButtonDown(0))
                     if(hit.transform.name == "labtop_whole") {
-                        mainController.GetComponent<ViewController>().setLaptopView(true);
+                        viewController.setLaptopView(true);
                     }
                     else if (hit.transform.name.Split('_')[0] == "lock") {
-                        mainController.GetComponent<ViewController>().setSuitcaseLockView(true);
+                        viewController.setSuitcaseLockView(true);
                     }
                     else if (hit.transform.name.Split('.')[0] == "Cube") {
                         switch (hit.transform.GetComponent<cubeItem>().cubeColor) {
                             case "blue":
+                                puzzleController.setBedCube(0);
                                 break;
                             case "green":
+                                puzzleController.setBedCube(1);
                                 break;
                             case "purple":
+                                puzzleController.setBedCube(2);
                                 break;
                             case "yellow":
+                                puzzleController.setBedCube(3);
                                 break;
                             default:
                                 break;
                         }
                     }
                     else if (hit.transform.name.Split('0')[0] == "layer") {
+                        if(hit.transform.localPosition.z + 0.7f <= 2.1f)
+                            hit.transform.Translate(new Vector3(0, 0, 0.7f));
+                        else
+                            hit.transform.Translate(new Vector3(0, 0, -2.8f));
 
+                        switch (hit.transform.name) {
+                            case "layer001":
+                                puzzleController.setLayer(0);
+                                break;
+                            case "layer002":
+                                puzzleController.setLayer(1);
+                                break;
+                            case "layer003":
+                                puzzleController.setLayer(2);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else if (hit.transform.name.Split(' ')[1] == "diamond") {
+                        switch (hit.transform.name.Split(' ')[0]) {
+                            case "blue":
+                                
+                                break;
+                            case "red":
+                                
+                                break;
+                            case "purple":
+                                
+                                break;
+                            case "orange":
+                                
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else if (hit.transform.name.Split('_')[0] == "door") {
+                        
                     }
                     else
                         hit.transform.gameObject.SetActive(false);
             }
-            else
+            else {
                 infoText.text = "";
+                isBigDoorTraced = false;
+            }
         }
         #endregion
     }
