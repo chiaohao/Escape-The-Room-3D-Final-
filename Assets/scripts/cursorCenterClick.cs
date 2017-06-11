@@ -9,6 +9,9 @@ public class cursorCenterClick : MonoBehaviour {
     float rayLength = 8f;
     RaycastHit hit;
     public Transform playerCam;
+    public Transform itemsParent;
+    public Transform itemPrefab;
+    public Sprite[] itemSprites;
     public Text infoText;
     public bool isTrace;
     public bool isBigDoorTraced;
@@ -128,18 +131,27 @@ public class cursorCenterClick : MonoBehaviour {
                         
                     }
                     else if (hit.transform.name.Split(' ')[0] == "diamond") {
+                        Transform item;
                         switch (hit.transform.name.Split(' ')[1]) {
                             case "blue":
-                                
+                                hit.transform.gameObject.SetActive(false);
+                                item = Instantiate(itemPrefab, itemsParent);
+                                item.GetComponent<Image>().sprite = itemSprites[0];
                                 break;
                             case "red":
-                                
+                                hit.transform.gameObject.SetActive(false);
+                                item = Instantiate(itemPrefab, itemsParent);
+                                item.GetComponent<Image>().sprite = itemSprites[1];
                                 break;
                             case "purple":
-                                
+                                hit.transform.gameObject.SetActive(false);
+                                item = Instantiate(itemPrefab, itemsParent);
+                                item.GetComponent<Image>().sprite = itemSprites[2];
                                 break;
                             case "orange":
-                                
+                                hit.transform.gameObject.SetActive(false);
+                                item = Instantiate(itemPrefab, itemsParent);
+                                item.GetComponent<Image>().sprite = itemSprites[3];
                                 break;
                             default:
                                 break;
