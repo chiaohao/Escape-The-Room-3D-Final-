@@ -27,7 +27,7 @@ public class cursorCenterClick : MonoBehaviour {
         if (isTrace) { 
             ray = new Ray(playerCam.position, playerCam.forward);
             if (Physics.Raycast(ray, out hit, rayLength) && hit.transform.gameObject.layer == LayerMask.NameToLayer("active object")) {
-                if(hit.transform.name == "labtop_whole") {
+                if(hit.transform.name == "laptop_whole") {
                     infoText.text = "筆記型電腦";
                 }
                 else if (hit.transform.name.Split('_')[0] == "lock") {
@@ -35,8 +35,8 @@ public class cursorCenterClick : MonoBehaviour {
                 }
                 else if (hit.transform.name.Split('.')[0] == "Cube") {
                     switch (hit.transform.GetComponent<cubeItem>().cubeColor) {
-                        case "blue":
-                            infoText.text = "藍積木";
+                        case "red":
+                            infoText.text = "紅積木";
                             break;
                         case "green":
                             infoText.text = "綠積木";
@@ -53,27 +53,11 @@ public class cursorCenterClick : MonoBehaviour {
                     }
                 }
                 else if (hit.transform.name.Split('_')[0] == "door") {
-                    switch (hit.transform.name.Split('_')[1].Split(' ')[0]) {
-                        case "blue":
-                            infoText.text = "藍寶石";
-                            break;
-                        case "red":
-                            infoText.text = "紅寶石";
-                            break;
-                        case "purple":
-                            infoText.text = "紫寶石";
-                            break;
-                        case "orange":
-                            infoText.text = "橘寶石";
-                            break;
-                        default:
-                            infoText.text = "大門";
-                            break;
-                    }
+                    infoText.text = "大門";
                     isBigDoorTraced = true;
                 }
-                else if (hit.transform.name.Split(' ')[1] == "diamond") {
-                    switch (hit.transform.name.Split(' ')[0]) {
+                else if (hit.transform.name.Split(' ')[0] == "diamond") {
+                    switch (hit.transform.name.Split(' ')[1]) {
                         case "blue":
                             infoText.text = "藍寶石";
                             break;
@@ -96,7 +80,7 @@ public class cursorCenterClick : MonoBehaviour {
                 
                 //set eachcase
                 if (Input.GetMouseButtonDown(0))
-                    if(hit.transform.name == "labtop_whole") {
+                    if(hit.transform.name == "laptop_whole") {
                         viewController.setLaptopView(true);
                     }
                     else if (hit.transform.name.Split('_')[0] == "lock") {
@@ -104,7 +88,7 @@ public class cursorCenterClick : MonoBehaviour {
                     }
                     else if (hit.transform.name.Split('.')[0] == "Cube") {
                         switch (hit.transform.GetComponent<cubeItem>().cubeColor) {
-                            case "blue":
+                            case "red":
                                 puzzleController.setBedCube(0);
                                 break;
                             case "green":
@@ -140,8 +124,11 @@ public class cursorCenterClick : MonoBehaviour {
                                 break;
                         }
                     }
-                    else if (hit.transform.name.Split(' ')[1] == "diamond") {
-                        switch (hit.transform.name.Split(' ')[0]) {
+                    else if (hit.transform.name.Split('_')[0] == "door") {
+                        
+                    }
+                    else if (hit.transform.name.Split(' ')[0] == "diamond") {
+                        switch (hit.transform.name.Split(' ')[1]) {
                             case "blue":
                                 
                                 break;
@@ -157,9 +144,6 @@ public class cursorCenterClick : MonoBehaviour {
                             default:
                                 break;
                         }
-                    }
-                    else if (hit.transform.name.Split('_')[0] == "door") {
-                        
                     }
                     else
                         hit.transform.gameObject.SetActive(false);

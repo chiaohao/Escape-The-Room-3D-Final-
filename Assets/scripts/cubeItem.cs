@@ -8,8 +8,8 @@ public class cubeItem : MonoBehaviour {
 
 	void Start () {
         switch (transform.GetComponent<MeshRenderer>().materials[0].name.Split(' ')[0]) {
-            case "blue":
-                cubeColor = "blue";
+            case "red":
+                cubeColor = "red";
                 break;
             case "green":
                 cubeColor = "green";
