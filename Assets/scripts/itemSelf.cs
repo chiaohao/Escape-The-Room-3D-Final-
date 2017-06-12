@@ -12,10 +12,13 @@ public class itemSelf : MonoBehaviour {
     string detail;
     bool isUpdated;
 
+    GameObject mainController;
+
 	void Start () {
         title = "";
         detail = "";
         isUpdated = false;
+        mainController = GameObject.Find("mainController");
 	}
 	
 	void Update () {
@@ -40,7 +43,7 @@ public class itemSelf : MonoBehaviour {
                 detail = "高貴的紫寶石，似乎可以裝在哪裡。";
                     break;
             case "orange diamond":
-                title = "藍寶石";
+                title = "橘寶石";
                 detail = "耀眼的橘寶石，似乎可以裝在哪裡。";
                     break;
             default:
@@ -59,6 +62,35 @@ public class itemSelf : MonoBehaviour {
 
     public void onMouseLeave() {
         itemDescription.gameObject.SetActive(false);
+    }
+
+    public void onMouseClick() {
+        if (mainController.GetComponent<cursorCenterClick>().isBigDoorTraced) {
+            switch (image.name) {
+                case "blue diamond":
+                    mainController.GetComponent<doorGoalController>().setDiamonds(0);
+                    Destroy(gameObject);
+                    itemDescription.gameObject.SetActive(false);
+                    break;
+                case "red diamond":
+                    mainController.GetComponent<doorGoalController>().setDiamonds(1);
+                    Destroy(gameObject);
+                    itemDescription.gameObject.SetActive(false);
+                    break;
+                case "purple diamond":
+                    mainController.GetComponent<doorGoalController>().setDiamonds(2);
+                    Destroy(gameObject);
+                    itemDescription.gameObject.SetActive(false);
+                    break;
+                case "orange diamond":
+                    mainController.GetComponent<doorGoalController>().setDiamonds(3);
+                    Destroy(gameObject);
+                    itemDescription.gameObject.SetActive(false);
+                    break;
+                default:
+                    break;
+          }
+        }
     }
 
     void setDetail() {

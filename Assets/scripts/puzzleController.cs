@@ -17,6 +17,7 @@ public class puzzleController : MonoBehaviour {
     public Text computerPassword;
     public GameObject laptop;
     public GameObject screen;
+    public GameObject poem;
     public Text[] suitcaseNumbers;
     public GameObject suitcaseCover;
 
@@ -24,15 +25,6 @@ public class puzzleController : MonoBehaviour {
         cubesColorsNum = new int[4] { 0, 0, 0, 0 }; //color def: [red, green, purple, yellow]
         layersPos = new int[3] { 0, 0, 0 }; //layer def: [up, mid, down]
         //to do
-    }
-	
-	void Update () {
-        if (isBedCubesComplete())
-            bedCubesCompleteAward();
-        if (isLayersComplete())
-            layersCompleteAward();
-        if (isSuitcasePasswordCorrect())
-            suitcasePasswordCorrectAward();
     }
 
     #region puzzle 1 (finished)
@@ -52,6 +44,8 @@ public class puzzleController : MonoBehaviour {
 
     public void setBedCube(int n) {
         cubesColorsNum[n] += 1;
+        if (isBedCubesComplete())
+            bedCubesCompleteAward();
     }
     #endregion
 
@@ -65,13 +59,15 @@ public class puzzleController : MonoBehaviour {
     }
 
     bool isLayersComplete() {
-        if (layersPos[0] == 1 && layersPos[1] == 2 && layersPos[2] == 3)
+        if (layersPos[0] == 3 && layersPos[1] == 1 && layersPos[2] == 2)
             return true;
         return false;
     }
 
     public void setLayer(int n) {
         layersPos[n] = (layersPos[n] + 1) % 5;
+        if (isLayersComplete())
+            layersCompleteAward();
     }
     #endregion
 
@@ -82,27 +78,31 @@ public class puzzleController : MonoBehaviour {
     }
 
     bool isSuitcasePasswordCorrect() {
-        if (suitcaseNumbers[0].text == "1" && suitcaseNumbers[1].text == "1" && suitcaseNumbers[2].text == "1" &&
-            suitcaseNumbers[3].text == "1" && suitcaseNumbers[4].text == "1" && suitcaseNumbers[5].text == "1")
+        if (suitcaseNumbers[0].text == "4" && suitcaseNumbers[1].text == "5" && suitcaseNumbers[2].text == "0" &&
+            suitcaseNumbers[3].text == "6" && suitcaseNumbers[4].text == "1" && suitcaseNumbers[5].text == "1")
             return true;
         return false;
     }
 
     public void setSuitcasePasswordNum(int c) {
         suitcaseNumbers[c].text = ((Int32.Parse(suitcaseNumbers[c].text) + 1) % 10).ToString();
+        if (isSuitcasePasswordCorrect())
+            suitcasePasswordCorrectAward();
     }
 
-    void computerPasswordCorrectAward() {
-        laptop.GetComponent<MeshRenderer>().materials[4].SetColor("_Color", new Color(1, 1, 1));
+    IEnumerator computerPasswordCorrectAward() {
         for (int i = 0; i < screen.transform.childCount; i++)
             screen.transform.GetChild(i).gameObject.SetActive(false);
+        poem.SetActive(true);
+        yield return new WaitForSeconds(5);
+        laptop.GetComponent<MeshRenderer>().materials[4].SetColor("_Color", new Color(1, 1, 1));
         screen.GetComponent<Image>().color = new Color(1, 1, 1);
     }
 
     public void checkComputerPassword() {
         //to do
-        if (computerPassword.text == "0000") {
-            computerPasswordCorrectAward();
+        if (computerPassword.text == "bloodyrose") {
+            StartCoroutine(computerPasswordCorrectAward());
         }
     }
     #endregion
@@ -111,7 +111,7 @@ public class puzzleController : MonoBehaviour {
 
     #endregion
 
-    #region puzzle end (not finished)
+    #region puzzle end (finished)
     bool isDoorDiamondsComplete() {
         foreach (GameObject d in doorDiamonds) {
             if (d.activeSelf == false)
