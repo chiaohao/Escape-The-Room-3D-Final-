@@ -17,12 +17,14 @@ public class cursorCenterClick : MonoBehaviour {
     public bool isBigDoorTraced;
     ViewController viewController;
     puzzleController puzzleController;
+    audioController audioController;
 
     void Start () {
         isTrace = true;
         isBigDoorTraced = false;
         viewController = GameObject.Find("mainController").GetComponent<ViewController>();
         puzzleController = GameObject.Find("mainController").GetComponent<puzzleController>();
+        audioController = GameObject.Find("audioController").GetComponent<audioController>();
     }
 
 	void Update () {
@@ -90,6 +92,7 @@ public class cursorCenterClick : MonoBehaviour {
                         viewController.setSuitcaseLockView(true);
                     }
                     else if (hit.transform.name.Split('.')[0] == "Cube") {
+                        audioController.playAudio("cubePick");
                         switch (hit.transform.GetComponent<cubeItem>().cubeColor) {
                             case "red":
                                 puzzleController.setBedCube(0);
@@ -128,7 +131,7 @@ public class cursorCenterClick : MonoBehaviour {
                         }
                     }
                     else if (hit.transform.name.Split('_')[0] == "door") {
-                        
+                        audioController.playAudio("doorLock");
                     }
                     else if (hit.transform.name.Split(' ')[0] == "diamond") {
                         Transform item;
@@ -147,6 +150,7 @@ public class cursorCenterClick : MonoBehaviour {
                                 hit.transform.gameObject.SetActive(false);
                                 item = Instantiate(itemPrefab, itemsParent);
                                 item.GetComponent<Image>().sprite = itemSprites[2];
+                                audioController.playAudio("femaleScream");
                                 break;
                             case "orange":
                                 hit.transform.gameObject.SetActive(false);
