@@ -25,10 +25,13 @@ public class puzzleController : MonoBehaviour {
     public GameObject suitcaseCover;
 
     public GameObject painting4;
+    public GameObject safeDoor;
+    string safePasswordInput;
 
 	void Start () {
         cubesColorsNum = new int[4] { 0, 0, 0, 0 }; //color def: [red, green, purple, yellow]
         layersPos = new int[3] { 0, 0, 0 }; //layer def: [up, mid, down]
+        safePasswordInput = "";
         audioController = GameObject.Find("audioController").GetComponent<audioController>();
     }
 
@@ -64,6 +67,7 @@ public class puzzleController : MonoBehaviour {
     #region puzzle 2 (finished)
     void layersCompleteAward() {
         foreach (GameObject door in wardrobeDoors) {
+            door.layer = LayerMask.NameToLayer("nonactive object");
             door.transform.localPosition = new Vector3(0, 0, 0);
             door.transform.localRotation = new Quaternion(0, 0, 0, 0);
         }
@@ -127,7 +131,29 @@ public class puzzleController : MonoBehaviour {
     }
     #endregion
 
-    #region puzzle 4 (to do)
+    #region puzzle 4 (finished)
+
+    void safePasswordCorrectAward() {
+        audioController.playAudio("safeOpen");
+        safeDoor.transform.localEulerAngles = new Vector3(0, 0, 0);
+        safeDoor.transform.localPosition = new Vector3(-0.66f, 0.9169195f, -0.143f);
+    }
+
+    bool isSafePasswordCorrect() {
+        if (safePasswordInput == "8811")
+            return true;
+        return false;
+    }
+
+    public void setSafePassword(string i) {
+        if (safePasswordInput.Length == 4)
+            safePasswordInput = safePasswordInput.Substring(1, 3);
+        safePasswordInput += i;
+        if (isSafePasswordCorrect()) {
+            safePasswordCorrectAward();
+        }
+    }
+
     public void setPainting4(bool isLightOn) {
         if (isLightOn)
             painting4.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("sprites/paintings/painting4-1");

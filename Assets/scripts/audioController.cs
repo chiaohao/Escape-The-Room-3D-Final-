@@ -14,6 +14,7 @@ public class audioController : MonoBehaviour {
     public AudioClip screenBreak;
     public AudioClip lockOpen;
     public AudioClip femaleScream;
+    public AudioClip safeOpen;
 
     void Start () {
         au = GetComponent<AudioSource>();
@@ -48,6 +49,9 @@ public class audioController : MonoBehaviour {
                 break;
             case "femaleScream":
                 au.PlayOneShot(femaleScream);
+                break;
+            case "safeOpen":
+                au.PlayOneShot(safeOpen);
                 break;
             default:
                 break;

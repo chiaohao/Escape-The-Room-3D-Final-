@@ -7,12 +7,14 @@ public class ViewController : MonoBehaviour {
     public GameObject itemMenu;
     public GameObject laptopView;
     public GameObject suitcaseLockView;
+    public GameObject safeView;
     public GameObject infoText;
     float lastTime;
     bool isMenuShow;
     bool isMenuEnable;
     bool isLaptopViewShow;
     bool isSuitcaseLockViewShow;
+    bool isSafeViewShow;
 
     void Start () {
         lastTime = Time.time;
@@ -20,6 +22,7 @@ public class ViewController : MonoBehaviour {
         isMenuEnable = true;
         isLaptopViewShow = false;
         isSuitcaseLockViewShow = false;
+        isSafeViewShow = false;
     }
 
 	void Update () {
@@ -40,6 +43,8 @@ public class ViewController : MonoBehaviour {
                 setLaptopView(false);
             if (isSuitcaseLockViewShow)
                 setSuitcaseLockView(false);
+            if (isSafeViewShow)
+                setSafeView(false);
             if (isMenuShow) {
                 isMenuShow = false;
                 setMenu(isMenuShow);
@@ -103,6 +108,28 @@ public class ViewController : MonoBehaviour {
         isMenuEnable = !isSLVS;
         //change cursor mode
         if (isSLVS) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+            Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void setSafeView(bool isSVS) {
+        isSafeViewShow = isSVS;
+        //change moving
+        player.GetComponent<playerMove>().isMovable = !isSVS;
+        //change tracing
+        transform.GetComponent<cursorCenterClick>().isTrace = !isSVS;
+        //change laptopView Visible
+        safeView.SetActive(isSVS);
+        //change infoText Visible
+        infoText.SetActive(!isSVS);
+        //stop itemView Enable
+        isMenuEnable = !isSVS;
+        //change cursor mode
+        if (isSVS)
+        {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }

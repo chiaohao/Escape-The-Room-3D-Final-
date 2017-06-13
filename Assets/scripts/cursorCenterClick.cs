@@ -90,7 +90,9 @@ public class cursorCenterClick : MonoBehaviour {
                 else if (hit.transform.name.Split('_')[0] == "safe") {
                     infoText.text = "保險櫃";
                 }
-                
+                else if (hit.transform.name.Split('_')[0] == "wardrobe") {
+                    infoText.text = "衣櫥";
+                }
                 //set eachcase
                 if (Input.GetMouseButtonDown(0))
                     if(hit.transform.name == "laptop_whole") {
@@ -170,11 +172,15 @@ public class cursorCenterClick : MonoBehaviour {
                         }
                     }
                     else if (hit.transform.name == "switch") {
+                        audioController.playAudio("lockOpen");
                         lightController.switchLight();
                         puzzleController.setPainting4(lightController.light.activeSelf);
                     }
                     else if (hit.transform.name.Split('_')[0] == "safe") {
-                        
+                        viewController.setSafeView(true);
+                    }
+                    else if (hit.transform.name.Split('_')[0] == "wardrobe") {
+                        audioController.playAudio("doorLock");
                     }
                     else
                         hit.transform.gameObject.SetActive(false);
