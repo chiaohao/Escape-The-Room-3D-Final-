@@ -52,6 +52,7 @@
      <Compile Include="Assets\scripts\cursorCenterClick.cs" />
      <Compile Include="Assets\scripts\doorGoalController.cs" />
      <Compile Include="Assets\scripts\itemSelf.cs" />
+     <Compile Include="Assets\scripts\lightController.cs" />
      <Compile Include="Assets\scripts\playerMove.cs" />
      <Compile Include="Assets\scripts\poemController.cs" />
      <Compile Include="Assets\scripts\puzzleController.cs" />

@@ -18,6 +18,7 @@ public class cursorCenterClick : MonoBehaviour {
     ViewController viewController;
     puzzleController puzzleController;
     audioController audioController;
+    lightController lightController;
 
     void Start () {
         isTrace = true;
@@ -25,6 +26,7 @@ public class cursorCenterClick : MonoBehaviour {
         viewController = GameObject.Find("mainController").GetComponent<ViewController>();
         puzzleController = GameObject.Find("mainController").GetComponent<puzzleController>();
         audioController = GameObject.Find("audioController").GetComponent<audioController>();
+        lightController = GameObject.Find("mainController").GetComponent<lightController>();
     }
 
 	void Update () {
@@ -81,6 +83,12 @@ public class cursorCenterClick : MonoBehaviour {
                 }
                 else if (hit.transform.name.Split('0')[0] == "layer") {
                     infoText.text = "抽屜";
+                }
+                else if (hit.transform.name == "switch") {
+                    infoText.text = "電燈開關";
+                }
+                else if (hit.transform.name.Split('_')[0] == "safe") {
+                    infoText.text = "保險櫃";
                 }
                 
                 //set eachcase
@@ -160,6 +168,13 @@ public class cursorCenterClick : MonoBehaviour {
                             default:
                                 break;
                         }
+                    }
+                    else if (hit.transform.name == "switch") {
+                        lightController.switchLight();
+                        puzzleController.setPainting4(lightController.light.activeSelf);
+                    }
+                    else if (hit.transform.name.Split('_')[0] == "safe") {
+                        
                     }
                     else
                         hit.transform.gameObject.SetActive(false);

@@ -24,6 +24,8 @@ public class puzzleController : MonoBehaviour {
     public Text[] suitcaseNumbers;
     public GameObject suitcaseCover;
 
+    public GameObject painting4;
+
 	void Start () {
         cubesColorsNum = new int[4] { 0, 0, 0, 0 }; //color def: [red, green, purple, yellow]
         layersPos = new int[3] { 0, 0, 0 }; //layer def: [up, mid, down]
@@ -126,7 +128,12 @@ public class puzzleController : MonoBehaviour {
     #endregion
 
     #region puzzle 4 (to do)
-
+    public void setPainting4(bool isLightOn) {
+        if (isLightOn)
+            painting4.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("sprites/paintings/painting4-1");
+        else
+            painting4.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("sprites/paintings/painting4-2");
+    }
     #endregion
 
     #region puzzle end (finished)
