@@ -50,7 +50,8 @@
      <Compile Include="Assets\scripts\audioController.cs" />
      <Compile Include="Assets\scripts\cubeItem.cs" />
      <Compile Include="Assets\scripts\cursorCenterClick.cs" />
-     <Compile Include="Assets\scripts\doorGoalController.cs" />
+     <Compile Include="Assets\scripts\endingController.cs" />
+     <Compile Include="Assets\scripts\fadePanel.cs" />
      <Compile Include="Assets\scripts\itemSelf.cs" />
      <Compile Include="Assets\scripts\lightController.cs" />
      <Compile Include="Assets\scripts\playerMove.cs" />

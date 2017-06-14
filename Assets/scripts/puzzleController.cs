@@ -9,6 +9,8 @@ public class puzzleController : MonoBehaviour {
     audioController audioController;
 
     public GameObject[] doorDiamonds;
+    public GameObject fadePanel;
+    public GameObject blackMaskPanel;
 
     public GameObject bedDrawer;
     int[] cubesColorsNum;
@@ -163,6 +165,14 @@ public class puzzleController : MonoBehaviour {
     #endregion
 
     #region puzzle end (finished)
+    void doorDiamondsCompleteAward() {
+        Cursor.lockState = CursorLockMode.Locked;
+        fadePanel.GetComponent<fadePanel>().outPanel = null;
+        fadePanel.GetComponent<fadePanel>().inPanel = blackMaskPanel;
+        fadePanel.GetComponent<fadePanel>().changeSceneName = "scenes/ending";
+        fadePanel.SetActive(true);
+    }
+
     bool isDoorDiamondsComplete() {
         foreach (GameObject d in doorDiamonds) {
             if (d.activeSelf == false)
@@ -186,6 +196,9 @@ public class puzzleController : MonoBehaviour {
                 doorDiamonds[3].SetActive(true);
                 break;
         }
+        Debug.Log(isDoorDiamondsComplete());
+        if (isDoorDiamondsComplete())
+            doorDiamondsCompleteAward();
     }
     #endregion
 }

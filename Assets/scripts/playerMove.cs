@@ -9,11 +9,13 @@ public class playerMove : MonoBehaviour {
     Transform playerCam;
     Vector3 transVal;
     public bool isMovable;
+    bool isCameraStand;
 
     void Start () {
         playerCam = transform.Find("playerCam");
         Cursor.lockState = CursorLockMode.Locked;
         isMovable = true;
+        isCameraStand = true;
     }
 	
 	void Update () {
@@ -45,6 +47,19 @@ public class playerMove : MonoBehaviour {
                 transVal += r * Time.deltaTime;
             }
             transform.Translate(transVal * translateSpeed, Space.World);
+
+            if (Input.GetKey(KeyCode.LeftShift)) {
+                if (isCameraStand) {
+                    playerCam.transform.Translate(new Vector3(0, -2f, 0), Space.World);
+                    isCameraStand = false;
+                }
+            }
+            else {
+                if (!isCameraStand) {
+                    playerCam.transform.Translate(new Vector3(0, 2f, 0), Space.World);
+                    isCameraStand = true;
+                }
+            }
 
             float rotX = Input.GetAxis("Mouse X");
             if (rotX != 0)

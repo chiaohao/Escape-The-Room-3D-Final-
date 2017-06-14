@@ -68,22 +68,22 @@ public class itemSelf : MonoBehaviour {
         if (mainController.GetComponent<cursorCenterClick>().isBigDoorTraced) {
             switch (image.name) {
                 case "blue diamond":
-                    mainController.GetComponent<doorGoalController>().setDiamonds(0);
+                    mainController.GetComponent<puzzleController>().setDoorDiamond("blue");
                     Destroy(gameObject);
                     itemDescription.gameObject.SetActive(false);
                     break;
                 case "red diamond":
-                    mainController.GetComponent<doorGoalController>().setDiamonds(1);
+                    mainController.GetComponent<puzzleController>().setDoorDiamond("red");
                     Destroy(gameObject);
                     itemDescription.gameObject.SetActive(false);
                     break;
                 case "purple diamond":
-                    mainController.GetComponent<doorGoalController>().setDiamonds(2);
+                    mainController.GetComponent<puzzleController>().setDoorDiamond("purple");
                     Destroy(gameObject);
                     itemDescription.gameObject.SetActive(false);
                     break;
                 case "orange diamond":
-                    mainController.GetComponent<doorGoalController>().setDiamonds(3);
+                    mainController.GetComponent<puzzleController>().setDoorDiamond("orange");
                     Destroy(gameObject);
                     itemDescription.gameObject.SetActive(false);
                     break;
