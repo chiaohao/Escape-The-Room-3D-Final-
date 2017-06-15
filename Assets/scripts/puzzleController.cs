@@ -148,6 +148,7 @@ public class puzzleController : MonoBehaviour {
     }
 
     public void setSafePassword(string i) {
+        audioController.playAudio("lockOpen");
         if (safePasswordInput.Length == 4)
             safePasswordInput = safePasswordInput.Substring(1, 3);
         safePasswordInput += i;
