@@ -4,6 +4,8 @@
 The escape-the-room-game 'Rose of Blood' is a final project of the NTU 2017 course '3D Creation'.
 </br>
 The game is made by Unity Engine based on C#.
+</br>
+Demo Video: https://youtu.be/bIw707y6UAk
 
 ## Staff
 3D Modeling Designer: Yun, Paul
